@@ -169,6 +169,10 @@ module ActiveRecord
         { concurrently: 'CONCURRENTLY' }
       end
 
+      def drop_database (name)
+        execute "DROP DATABASE #{quote_table_name(name)}"
+      end
+
       class StatementPool < ConnectionAdapters::StatementPool
         def initialize(connection, max)
           super
